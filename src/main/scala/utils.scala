@@ -4,7 +4,7 @@ abstract class Element {
 
   def height: Int = contents.length  // parameterless method
   // val height = contents.length // implemented as a field
-  
+
   def width: Int = if (height == 0) 0 else contents(0).length // parameterless method
   // val width = if (height == 0) 0 else contents(0).length // implemented as a field
 
@@ -27,4 +27,9 @@ class LineElement(s: String) extends Element {
   val contents = Array(s)
   override def width = s.length
   override def height = 1
+}
+
+class UniformElement (ch: Char, override val width:Int, override val height: Int) extends Element {
+  private val line = ch.toString * width
+  def contents = Array.fill(height)(line)
 }
